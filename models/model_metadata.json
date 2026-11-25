@@ -1,0 +1,815 @@
+{
+  "best_model_name": "Random Forest Regressor",
+  "best_model_metrics": {
+    "model_name": "Random Forest Regressor",
+    "r2": 0.9217480233746866,
+    "mae": 77038.62109176411,
+    "rmse": 154766.18575573395,
+    "params": {
+      "n_estimators": 150,
+      "max_depth": 18,
+      "min_samples_leaf": 2,
+      "random_state": 42
+    },
+    "description": "Ensemble of 150 decision trees trained with bootstrap aggregation."
+  },
+  "model_results": [
+    {
+      "model_name": "Linear Regression",
+      "r2": 0.742201784679071,
+      "mae": 130988.8802952424,
+      "rmse": 280910.7598127381,
+      "params": {
+        "fit_intercept": true
+      },
+      "description": "Ordinary Least Squares baseline regression model."
+    },
+    {
+      "model_name": "Decision Tree Regressor",
+      "r2": 0.8448379528844607,
+      "mae": 96237.34949665921,
+      "rmse": 217932.08385734732,
+      "params": {
+        "max_depth": 12,
+        "min_samples_leaf": 5,
+        "random_state": 42
+      },
+      "description": "Non-linear tree-based regressor with depth regularization."
+    },
+    {
+      "model_name": "Random Forest Regressor",
+      "r2": 0.9217480233746866,
+      "mae": 77038.62109176411,
+      "rmse": 154766.18575573395,
+      "params": {
+        "n_estimators": 150,
+        "max_depth": 18,
+        "min_samples_leaf": 2,
+        "random_state": 42
+      },
+      "description": "Ensemble of 150 decision trees trained with bootstrap aggregation."
+    }
+  ],
+  "split_config": {
+    "train_rows": 5538,
+    "test_rows": 1385,
+    "test_size": 0.2,
+    "random_state": 42
+  },
+  "raw_dataset_summary": {
+    "rows": 8128,
+    "columns": 13,
+    "column_names": [
+      "name",
+      "year",
+      "selling_price",
+      "km_driven",
+      "fuel",
+      "seller_type",
+      "transmission",
+      "owner",
+      "mileage",
+      "engine",
+      "max_power",
+      "torque",
+      "seats"
+    ],
+    "dtypes": {
+      "name": "str",
+      "year": "int64",
+      "selling_price": "int64",
+      "km_driven": "int64",
+      "fuel": "str",
+      "seller_type": "str",
+      "transmission": "str",
+      "owner": "str",
+      "mileage": "str",
+      "engine": "str",
+      "max_power": "str",
+      "torque": "str",
+      "seats": "float64"
+    },
+    "missing_values": {
+      "name": 0,
+      "year": 0,
+      "selling_price": 0,
+      "km_driven": 0,
+      "fuel": 0,
+      "seller_type": 0,
+      "transmission": 0,
+      "owner": 0,
+      "mileage": 221,
+      "engine": 221,
+      "max_power": 215,
+      "torque": 222,
+      "seats": 221
+    },
+    "total_missing_cells": 1100,
+    "duplicate_rows": 1202,
+    "source_url": "https://raw.githubusercontent.com/StatguyUser/feature_engineering_and_selection_for_explanable_models/main/Car%20details%20v3.csv",
+    "kaggle_reference": "https://www.kaggle.com/datasets/nehalbirla/vehicle-dataset-from-cardekho",
+    "geographical_context": "India (CarDekho listings)",
+    "price_unit": "INR (Indian Rupees)",
+    "selling_price_stats": {
+      "min": 29999.0,
+      "median": 450000.0,
+      "mean": 638271.8077017716,
+      "max": 10000000.0,
+      "std": 806253.4035082317
+    }
+  },
+  "cleaning_report": {
+    "raw_rows": 8128,
+    "duplicates_removed": 1202,
+    "odometer_outliers_removed": 3,
+    "odometer_threshold_km": 500000,
+    "final_rows": 6923,
+    "reference_year": 2020,
+    "luxury_price_iqr_upper_fence": 1211250.0,
+    "luxury_price_iqr_outlier_count": 327,
+    "missing_before_imputation": {
+      "vehicle_age": 0,
+      "km_driven": 0,
+      "mileage": 223,
+      "engine": 208,
+      "max_power": 209,
+      "seats": 208,
+      "brand": 0,
+      "car_model": 0,
+      "fuel": 0,
+      "seller_type": 0,
+      "transmission": 0,
+      "owner": 0
+    }
+  },
+  "cleaned_dataset_stats": {
+    "rows": 6923,
+    "mean_price": 517315.1406904521,
+    "median_price": 400000.0,
+    "min_price": 29999.0,
+    "max_price": 10000000.0,
+    "year_min": 1983,
+    "year_max": 2020,
+    "num_brands": 32,
+    "num_models": 210,
+    "fuel_types": [
+      "CNG",
+      "Diesel",
+      "LPG",
+      "Petrol"
+    ],
+    "seller_types": [
+      "Dealer",
+      "Individual",
+      "Trustmark Dealer"
+    ],
+    "transmission_types": [
+      "Automatic",
+      "Manual"
+    ],
+    "owner_types": [
+      "First Owner",
+      "Second Owner",
+      "Third Owner",
+      "Fourth & Above Owner",
+      "Test Drive Car"
+    ],
+    "seat_options": [
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      14
+    ],
+    "medians": {
+      "km_driven": 70000.0,
+      "mileage": 19.49,
+      "engine": 1248.0,
+      "max_power": 81.83,
+      "seats": 5
+    },
+    "brand_to_models": {
+      "Ambassador": [
+        "Ambassador CLASSIC",
+        "Ambassador Classic",
+        "Ambassador Grand"
+      ],
+      "Ashok": [
+        "Ashok Leyland"
+      ],
+      "Audi": [
+        "Audi A3",
+        "Audi A4",
+        "Audi A6",
+        "Audi Q3",
+        "Audi Q5",
+        "Audi Q7"
+      ],
+      "BMW": [
+        "BMW 3",
+        "BMW 5",
+        "BMW 6",
+        "BMW 7",
+        "BMW X1",
+        "BMW X3",
+        "BMW X4",
+        "BMW X5",
+        "BMW X6",
+        "BMW X7"
+      ],
+      "Chevrolet": [
+        "Chevrolet Aveo",
+        "Chevrolet Beat",
+        "Chevrolet Captiva",
+        "Chevrolet Cruze",
+        "Chevrolet Enjoy",
+        "Chevrolet Optra",
+        "Chevrolet Sail",
+        "Chevrolet Spark",
+        "Chevrolet Tavera",
+        "Chevrolet Trailblazer"
+      ],
+      "Daewoo": [
+        "Daewoo Matiz"
+      ],
+      "Datsun": [
+        "Datsun GO",
+        "Datsun RediGO"
+      ],
+      "Fiat": [
+        "Fiat Avventura",
+        "Fiat Grande",
+        "Fiat Linea",
+        "Fiat Palio",
+        "Fiat Punto"
+      ],
+      "Force": [
+        "Force Gurkha",
+        "Force One"
+      ],
+      "Ford": [
+        "Ford Aspire",
+        "Ford Classic",
+        "Ford EcoSport",
+        "Ford Ecosport",
+        "Ford Endeavour",
+        "Ford Fiesta",
+        "Ford Figo",
+        "Ford Freestyle",
+        "Ford Fusion",
+        "Ford Ikon"
+      ],
+      "Honda": [
+        "Honda Accord",
+        "Honda Amaze",
+        "Honda BR-V",
+        "Honda BRV",
+        "Honda Brio",
+        "Honda CR-V",
+        "Honda City",
+        "Honda Civic",
+        "Honda Jazz",
+        "Honda Mobilio",
+        "Honda WR-V"
+      ],
+      "Hyundai": [
+        "Hyundai Accent",
+        "Hyundai Creta",
+        "Hyundai EON",
+        "Hyundai Elantra",
+        "Hyundai Elite",
+        "Hyundai Getz",
+        "Hyundai Grand",
+        "Hyundai Santa",
+        "Hyundai Santro",
+        "Hyundai Sonata",
+        "Hyundai Tucson",
+        "Hyundai Venue",
+        "Hyundai Verna",
+        "Hyundai Xcent",
+        "Hyundai i10",
+        "Hyundai i20"
+      ],
+      "Isuzu": [
+        "Isuzu D-Max",
+        "Isuzu MU",
+        "Isuzu MUX"
+      ],
+      "Jaguar": [
+        "Jaguar XE",
+        "Jaguar XF"
+      ],
+      "Jeep": [
+        "Jeep Compass",
+        "Jeep Wrangler"
+      ],
+      "Kia": [
+        "Kia Seltos"
+      ],
+      "Land": [
+        "Land Rover"
+      ],
+      "Lexus": [
+        "Lexus ES"
+      ],
+      "MG": [
+        "MG Hector"
+      ],
+      "Mahindra": [
+        "Mahindra Bolero",
+        "Mahindra Ingenio",
+        "Mahindra Jeep",
+        "Mahindra KUV",
+        "Mahindra Logan",
+        "Mahindra Marazzo",
+        "Mahindra Marshal",
+        "Mahindra NuvoSport",
+        "Mahindra Quanto",
+        "Mahindra Renault",
+        "Mahindra Scorpio",
+        "Mahindra Ssangyong",
+        "Mahindra Supro",
+        "Mahindra TUV",
+        "Mahindra Thar",
+        "Mahindra Verito",
+        "Mahindra Willys",
+        "Mahindra XUV300",
+        "Mahindra XUV500",
+        "Mahindra Xylo"
+      ],
+      "Maruti": [
+        "Maruti 800",
+        "Maruti A-Star",
+        "Maruti Alto",
+        "Maruti Baleno",
+        "Maruti Celerio",
+        "Maruti Ciaz",
+        "Maruti Dzire",
+        "Maruti Eeco",
+        "Maruti Ertiga",
+        "Maruti Esteem",
+        "Maruti Estilo",
+        "Maruti Gypsy",
+        "Maruti Ignis",
+        "Maruti Omni",
+        "Maruti Ritz",
+        "Maruti S-Cross",
+        "Maruti S-Presso",
+        "Maruti SX4",
+        "Maruti Swift",
+        "Maruti Vitara",
+        "Maruti Wagon",
+        "Maruti XL6",
+        "Maruti Zen"
+      ],
+      "Mercedes-Benz": [
+        "Mercedes-Benz B",
+        "Mercedes-Benz CLA",
+        "Mercedes-Benz E-Class",
+        "Mercedes-Benz GL-Class",
+        "Mercedes-Benz GLA",
+        "Mercedes-Benz GLC",
+        "Mercedes-Benz M-Class",
+        "Mercedes-Benz New",
+        "Mercedes-Benz S-Class"
+      ],
+      "Mitsubishi": [
+        "Mitsubishi Lancer",
+        "Mitsubishi Pajero"
+      ],
+      "Nissan": [
+        "Nissan Kicks",
+        "Nissan Micra",
+        "Nissan Sunny",
+        "Nissan Teana",
+        "Nissan Terrano"
+      ],
+      "Opel": [
+        "Opel Astra"
+      ],
+      "Peugeot": [
+        "Peugeot 309"
+      ],
+      "Renault": [
+        "Renault Captur",
+        "Renault Duster",
+        "Renault Fluence",
+        "Renault KWID",
+        "Renault Koleos",
+        "Renault Lodgy",
+        "Renault Pulse",
+        "Renault Scala",
+        "Renault Triber"
+      ],
+      "Skoda": [
+        "Skoda Fabia",
+        "Skoda Kodiaq",
+        "Skoda Laura",
+        "Skoda Octavia",
+        "Skoda Rapid",
+        "Skoda Superb",
+        "Skoda Yeti"
+      ],
+      "Tata": [
+        "Tata Aria",
+        "Tata Bolt",
+        "Tata Estate",
+        "Tata Harrier",
+        "Tata Hexa",
+        "Tata Indica",
+        "Tata Indigo",
+        "Tata Manza",
+        "Tata Nano",
+        "Tata New",
+        "Tata Nexon",
+        "Tata Safari",
+        "Tata Spacio",
+        "Tata Sumo",
+        "Tata Tiago",
+        "Tata Tigor",
+        "Tata Venture",
+        "Tata Winger",
+        "Tata Xenon",
+        "Tata Zest"
+      ],
+      "Toyota": [
+        "Toyota Camry",
+        "Toyota Corolla",
+        "Toyota Etios",
+        "Toyota Fortuner",
+        "Toyota Glanza",
+        "Toyota Innova",
+        "Toyota Land",
+        "Toyota Platinum",
+        "Toyota Premio",
+        "Toyota Qualis",
+        "Toyota Yaris"
+      ],
+      "Volkswagen": [
+        "Volkswagen Ameo",
+        "Volkswagen CrossPolo",
+        "Volkswagen GTI",
+        "Volkswagen Jetta",
+        "Volkswagen Multivan",
+        "Volkswagen Passat",
+        "Volkswagen Polo",
+        "Volkswagen Vento"
+      ],
+      "Volvo": [
+        "Volvo S60",
+        "Volvo S90",
+        "Volvo V40",
+        "Volvo XC40",
+        "Volvo XC60",
+        "Volvo XC90"
+      ]
+    }
+  },
+  "feature_importance": {
+    "method": "Random Forest Gini Importance",
+    "top10_encoded": [
+      {
+        "feature": "Max Power (bhp)",
+        "importance": 0.5892162558019313
+      },
+      {
+        "feature": "Vehicle Age (yrs)",
+        "importance": 0.2118428614927983
+      },
+      {
+        "feature": "KM Driven",
+        "importance": 0.07581319854973792
+      },
+      {
+        "feature": "Engine (CC)",
+        "importance": 0.02675728981254962
+      },
+      {
+        "feature": "Mileage (kmpl)",
+        "importance": 0.018926179922946956
+      },
+      {
+        "feature": "Seats",
+        "importance": 0.017630243461399377
+      },
+      {
+        "feature": "Brand: Mercedes-Benz",
+        "importance": 0.006690475261914111
+      },
+      {
+        "feature": "Model: infrequent_sklearn",
+        "importance": 0.005526278729337957
+      },
+      {
+        "feature": "Brand: Tata",
+        "importance": 0.004802196890236858
+      },
+      {
+        "feature": "Model: Toyota Innova",
+        "importance": 0.004716306213445401
+      }
+    ],
+    "grouped_features": [
+      {
+        "base_feature": "max_power",
+        "feature": "Max Power (bhp)",
+        "importance": 0.5892162558019313
+      },
+      {
+        "base_feature": "vehicle_age",
+        "feature": "Vehicle Age (yrs)",
+        "importance": 0.2118428614927983
+      },
+      {
+        "base_feature": "km_driven",
+        "feature": "KM Driven",
+        "importance": 0.07581319854973792
+      },
+      {
+        "base_feature": "engine",
+        "feature": "Engine (CC)",
+        "importance": 0.02675728981254962
+      },
+      {
+        "base_feature": "brand",
+        "feature": "brand",
+        "importance": 0.02140918924488951
+      },
+      {
+        "base_feature": "car_model",
+        "feature": "car_model",
+        "importance": 0.02103478392499157
+      },
+      {
+        "base_feature": "mileage",
+        "feature": "Mileage (kmpl)",
+        "importance": 0.018926179922946956
+      },
+      {
+        "base_feature": "seats",
+        "feature": "Seats",
+        "importance": 0.017630243461399377
+      },
+      {
+        "base_feature": "transmission",
+        "feature": "transmission",
+        "importance": 0.006241152010403987
+      },
+      {
+        "base_feature": "fuel",
+        "feature": "fuel",
+        "importance": 0.005166328997542412
+      },
+      {
+        "base_feature": "owner",
+        "feature": "owner",
+        "importance": 0.0030965152502246676
+      },
+      {
+        "base_feature": "seller_type",
+        "feature": "seller_type",
+        "importance": 0.0028660015305844006
+      }
+    ],
+    "chart_path": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\feature_importance_top10.png"
+  },
+  "shap_explainability": {
+    "shap_available": true,
+    "method": "SHAP TreeExplainer",
+    "sample_size": 200,
+    "top10_shap": [
+      {
+        "feature": "Max Power (bhp)",
+        "mean_abs_shap": 190051.69232538485
+      },
+      {
+        "feature": "Vehicle Age (yrs)",
+        "mean_abs_shap": 159244.25984445057
+      },
+      {
+        "feature": "Engine (CC)",
+        "mean_abs_shap": 33762.969012778594
+      },
+      {
+        "feature": "KM Driven",
+        "mean_abs_shap": 27076.277624074064
+      },
+      {
+        "feature": "Brand: Tata",
+        "mean_abs_shap": 8480.595500814676
+      },
+      {
+        "feature": "Mileage (kmpl)",
+        "mean_abs_shap": 8190.880453849975
+      },
+      {
+        "feature": "Seats",
+        "mean_abs_shap": 6603.906058249571
+      },
+      {
+        "feature": "Model: Toyota Innova",
+        "mean_abs_shap": 6020.863264766197
+      },
+      {
+        "feature": "Model: Maruti Swift",
+        "mean_abs_shap": 4439.97261863625
+      },
+      {
+        "feature": "Owner: First Owner",
+        "mean_abs_shap": 4402.116657006414
+      }
+    ],
+    "summary_chart_path": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\shap_summary.png",
+    "bar_chart_path": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\shap_importance_bar.png",
+    "fallback_note": null
+  },
+  "depreciation_summary": {
+    "age_summary": [
+      {
+        "vehicle_age": 0,
+        "mean": 888349.1587301587,
+        "median": 600000.0,
+        "count": 63
+      },
+      {
+        "vehicle_age": 1,
+        "mean": 949668.5475504323,
+        "median": 693000.0,
+        "count": 347
+      },
+      {
+        "vehicle_age": 2,
+        "mean": 866376.6134868421,
+        "median": 700000.0,
+        "count": 608
+      },
+      {
+        "vehicle_age": 3,
+        "mean": 732419.5173267326,
+        "median": 625000.0,
+        "count": 808
+      },
+      {
+        "vehicle_age": 4,
+        "mean": 653180.3391053391,
+        "median": 550000.0,
+        "count": 693
+      },
+      {
+        "vehicle_age": 5,
+        "mean": 589177.6255506608,
+        "median": 525000.0,
+        "count": 681
+      },
+      {
+        "vehicle_age": 6,
+        "mean": 511858.79862306366,
+        "median": 450000.0,
+        "count": 581
+      },
+      {
+        "vehicle_age": 7,
+        "mean": 451501.72419928823,
+        "median": 387000.0,
+        "count": 562
+      },
+      {
+        "vehicle_age": 8,
+        "mean": 351140.9237147595,
+        "median": 310000.0,
+        "count": 603
+      },
+      {
+        "vehicle_age": 9,
+        "mean": 318335.6967509025,
+        "median": 265000.0,
+        "count": 554
+      },
+      {
+        "vehicle_age": 10,
+        "mean": 274108.1451187335,
+        "median": 220000.0,
+        "count": 379
+      },
+      {
+        "vehicle_age": 11,
+        "mean": 227691.62083333332,
+        "median": 180000.0,
+        "count": 240
+      },
+      {
+        "vehicle_age": 12,
+        "mean": 208397.63902439026,
+        "median": 175000.0,
+        "count": 205
+      },
+      {
+        "vehicle_age": 13,
+        "mean": 172751.04571428572,
+        "median": 140000.0,
+        "count": 175
+      },
+      {
+        "vehicle_age": 14,
+        "mean": 164383.30894308942,
+        "median": 140000.0,
+        "count": 123
+      },
+      {
+        "vehicle_age": 15,
+        "mean": 137994.4945054945,
+        "median": 105000.0,
+        "count": 91
+      },
+      {
+        "vehicle_age": 16,
+        "mean": 109364.25,
+        "median": 90000.0,
+        "count": 60
+      },
+      {
+        "vehicle_age": 17,
+        "mean": 97034.02127659574,
+        "median": 70000.0,
+        "count": 47
+      },
+      {
+        "vehicle_age": 18,
+        "mean": 99153.80769230769,
+        "median": 75000.0,
+        "count": 26
+      },
+      {
+        "vehicle_age": 19,
+        "mean": 47220.333333333336,
+        "median": 45000.0,
+        "count": 9
+      },
+      {
+        "vehicle_age": 20,
+        "mean": 90047.85,
+        "median": 83000.0,
+        "count": 20
+      }
+    ],
+    "fuel_summary": [
+      {
+        "fuel": "Diesel",
+        "mean": 639764.989877464,
+        "median": 520000.0,
+        "count": 3754
+      },
+      {
+        "fuel": "Petrol",
+        "mean": 375691.3658536585,
+        "median": 310000.0,
+        "count": 3075
+      },
+      {
+        "fuel": "CNG",
+        "mean": 300499.9464285714,
+        "median": 320000.0,
+        "count": 56
+      },
+      {
+        "fuel": "LPG",
+        "mean": 200421.05263157896,
+        "median": 195500.0,
+        "count": 38
+      }
+    ],
+    "transmission_summary": [
+      {
+        "transmission": "Automatic",
+        "mean": 1309712.3047945206,
+        "median": 850000.0,
+        "count": 584
+      },
+      {
+        "transmission": "Manual",
+        "mean": 444313.09875374666,
+        "median": 385000.0,
+        "count": 6339
+      }
+    ]
+  },
+  "charts": {
+    "eda_price_distribution": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\eda_price_distribution.png",
+    "eda_correlation_heatmap": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\eda_correlation_heatmap.png",
+    "eda_top_brands": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\eda_top_brands.png",
+    "depreciation_age_vs_price": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\depreciation_age_vs_price.png",
+    "depreciation_km_vs_price": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\depreciation_km_vs_price.png",
+    "depreciation_fuel_type": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\depreciation_fuel_type.png",
+    "depreciation_transmission": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\depreciation_transmission.png",
+    "model_comparison_r2": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\model_comparison_r2.png",
+    "model_comparison_errors": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\model_comparison_errors.png",
+    "actual_vs_predicted": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\actual_vs_predicted.png",
+    "feature_importance_top10": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\feature_importance_top10.png",
+    "shap_summary": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\shap_summary.png",
+    "shap_bar": "C:\\Users\\HP\\OneDrive\\Desktop\\Used_car_price_prediction\\reports\\charts\\shap_importance_bar.png"
+  }
+}
